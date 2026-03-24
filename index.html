@@ -30,6 +30,13 @@
             margin: 0;
         }
 
+        /* LOGO FLUTUANTE */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
         /* CABEÇALHO */
         header {
             min-height: 100vh;
@@ -48,6 +55,7 @@
             height: auto;
             filter: drop-shadow(0 0 20px #d40000);
             margin-bottom: 0px; 
+            animation: float 4s ease-in-out infinite; /* Efeito flutuante */
         }
 
         header h1 {
@@ -129,7 +137,7 @@
             display: block;
         }
 
-        /* SEÇÃO INTEGRANTES (HOVER CORRIGIDO) */
+        /* SEÇÃO INTEGRANTES */
         .section-dark { padding: 60px 20px; background: transparent; }
 
         .integrantes-img {
@@ -185,6 +193,15 @@
         
         .vert { aspect-ratio: 9 / 16; }
 
+        /* DESTAQUE DA DATA HALLOWEEN */
+        .data-hora-ritual {
+            font-size: 3rem;
+            color: #ff4500; /* Laranja Halloween */
+            text-shadow: 0 0 15px #d40000, 2px 2px 5px #000;
+            margin: 20px 0;
+            display: block;
+        }
+
         /* RODAPÉ E BOTÕES DE AÇÃO */
         .event-info-bottom {
             background: rgba(0, 0, 0, 0.95);
@@ -214,18 +231,15 @@
             letter-spacing: 1px;
         }
 
-        /* Botão Mapa */
         .btn-maps { background-color: #d40000; border-radius: 4px; }
         .btn-maps:hover { background-color: #ff0000; box-shadow: 0 0 20px rgba(212, 0, 0, 0.6); transform: scale(1.02); }
 
-        /* Botão WhatsApp */
         .btn-whatsapp { 
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
         .btn-whatsapp:hover { box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); transform: scale(1.02); }
 
-        /* Botão Instagram Chamativo */
         .btn-instagram {
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             box-shadow: 0 4px 15px rgba(214, 36, 159, 0.3);
@@ -236,6 +250,10 @@
 
         footer { padding: 40px; color: #444; font-size: 0.8rem; background: #000; border-top: 1px solid #111; }
         .highlight-text { color: #d40000; }
+
+        @media (max-width: 600px) {
+            .data-hora-ritual { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -253,7 +271,6 @@
 <section class="section-dark">
     <h2>NESSE RITUAL PRESTAREMOS TRIBUTO ÀS BANDAS...</h2>
     <div class="lineup-container">
-        
         <div class="artist-card">
             <img src="kingdiamond1.png" alt="King Diamond" class="band-photo">
             <div class="logo-wrapper">
@@ -278,7 +295,6 @@
             </div>
             <span class="vocalista-name">VOCAL: NILO MARTINS</span>
         </div>
-
     </div>
 </section>
 
@@ -294,7 +310,6 @@
     </div>
     <div id="legacy-content" class="legacy-content">
         <iframe class="video-item horiz" src="https://www.youtube.com/embed/x6-LvdI7XiM" frameborder="0" allowfullscreen></iframe>
-        
         <div class="video-grid-vertical">
             <iframe class="video-item vert" src="https://www.youtube.com/embed/4RRQsGccZuQ" frameborder="0" allowfullscreen></iframe>
             <iframe class="video-item vert" src="https://www.youtube.com/embed/lNygJKOheM0" frameborder="0" allowfullscreen></iframe>
@@ -316,11 +331,12 @@
 </div>
 
 <section class="event-info-bottom">
-    <h2>31 OUTUBRO | 20:00H</h2>
-    <p>LOCAL - CERVEJARIA BENEDITH | UBERLÂNDIA-MG</p>
+    <h2 class="data-hora-ritual">🎃 31 OUTUBRO | 20:00H 🦇</h2>
+    
+    <p>LOCAL - CERVEJARIA BENEDITH | AV. GETÚLIO VARGAS, 2100 - UBERLÂNDIA</p>
     <p><strong class="highlight-text">INGRESSOS NA PORTARIA NO DIA DO FESTIVAL</strong></p>
     
-    <a href="https://www.google.com/maps/search/Cervejaria+Benedith+Uberlândia" target="_blank" class="btn-ritual btn-maps">
+    <a href="https://www.google.com/maps/search/?api=1&query=Cervejaria+Benedith+Uberlandia+Av+Getulio+Vargas+2100" target="_blank" class="btn-ritual btn-maps">
        VER LOCALIZAÇÃO NO MAPA
     </a>
 
