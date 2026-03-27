@@ -30,43 +30,6 @@
             margin: 0;
         }
 
-        /* SPOTIFY FLUTUANTE */
-        #spotify-flutuante {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9999;
-            width: 300px;
-            height: 80px;
-            background: #000;
-            border: 1px solid #d40000;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(212, 0, 0, 0.6);
-            overflow: visible;
-            transition: all 0.3s ease;
-        }
-
-        .btn-fechar-spotify {
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            width: 25px;
-            height: 25px;
-            background: #d40000;
-            color: white;
-            border: 2px solid #000;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10001;
-        }
-
-        .btn-fechar-spotify:hover { background: #ff0000; transform: scale(1.1); }
-
         /* CABEÇALHO */
         header {
             min-height: 100vh;
@@ -187,23 +150,16 @@
         .btn-maps { background-color: #d40000; border-radius: 4px; }
         .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
         .btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497, #fd5949, #d6249f, #285AEB); }
+        .btn-spotify { background-color: #1DB954; }
+        
         .btn-ritual:hover { transform: scale(1.05); }
         .btn-ritual svg { width: 22px; height: 22px; fill: currentColor; }
 
         footer { padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
         .highlight-text { color: #d40000; }
-
-        @media (max-width: 600px) {
-            #spotify-flutuante { width: 260px; left: 15px; bottom: 15px; }
-        }
     </style>
 </head>
 <body>
-
-<div id="spotify-flutuante">
-    <button class="btn-fechar-spotify" onclick="fecharSpotify()">×</button>
-    <iframe style="border-radius:0px" src="https://open.spotify.com/embed/playlist/2FNTHr2faf8WJGm8YyCE9C?utm_source=generator" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
 
 <header>
     <img src="logo.png" alt="Gods Of Metal" class="logo-principal">
@@ -287,6 +243,11 @@
        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
        Siga-nos no Instagram
     </a>
+
+    <a href="https://open.spotify.com/embed/playlist/2FNTHr2faf8WJGm8YyCE9C?utm_source=generator" target="_blank" class="btn-ritual btn-spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.485 17.303c-.215.354-.675.467-1.03.251-2.858-1.745-6.456-2.14-10.693-1.171-.406.092-.814-.162-.907-.567-.093-.406.162-.814.567-.907 4.637-1.06 8.624-.606 11.812 1.341.355.216.468.677.251 1.03zm1.467-3.264c-.27.439-.844.58-1.282.311-3.271-2.011-8.257-2.593-12.126-1.417-.496.151-1.02-.128-1.171-.624-.151-.496.128-1.02.624-1.171 4.417-1.34 9.904-.689 13.644 1.611.438.27.579.844.311 1.282zm.127-3.41c-3.924-2.33-10.388-2.545-14.154-1.401-.602.183-1.243-.162-1.426-.764-.183-.602.162-1.243.764-1.426 4.316-1.31 11.45-1.056 16.002 1.646.541.321.716 1.016.395 1.557-.321.541-1.016.716-1.557.395z"/></svg>
+        CONHEÇA AS MÚSICAS DA 2ª EDIÇÃO
+     </a>
 </section>
 
 <footer>
@@ -294,10 +255,6 @@
 </footer>
 
 <script>
-    function fecharSpotify() {
-        document.getElementById('spotify-flutuante').style.display = 'none';
-    }
-
     function toggleSection(id, arrowId) {
         const content = document.getElementById(id);
         const arrow = document.getElementById(arrowId);
