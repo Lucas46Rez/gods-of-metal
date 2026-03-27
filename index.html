@@ -30,7 +30,7 @@
             margin: 0;
         }
 
-        /* SPOTIFY FLUTUANTE COM OPÇÃO DE FECHAR */
+        /* SPOTIFY FLUTUANTE */
         #spotify-flutuante {
             position: fixed;
             bottom: 20px;
@@ -137,6 +137,7 @@
             border: 2px solid #222;
             filter: grayscale(100%);
             transition: 0.5s ease;
+            cursor: pointer;
         }
         .integrantes-img:hover { filter: grayscale(0%); border-color: #d40000; transform: scale(1.02); }
 
@@ -157,7 +158,15 @@
             align-items: center;
         }
         .legacy-content { padding: 25px; display: none; text-align: center; }
-        .video-item { width: 100%; aspect-ratio: 16/9; border: 1px solid #333; }
+        
+        .video-item { width: 100%; background: #000; border: 1px solid #333; }
+        .horiz { aspect-ratio: 16 / 9; margin-bottom: 20px; }
+        .video-grid-vertical { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px; 
+        }
+        .vert { aspect-ratio: 9 / 16; }
 
         /* RODAPÉ E BOTÕES */
         .event-info-bottom {
@@ -201,9 +210,8 @@
     <h1>The Halloween's Ritual</h1>
     <div class="intro-container">
         <p>Vocês pediram e os Deuses do Metal ouviram! Após o sucesso avassalador da nossa primeira edição, o ritual está de volta para invocar as sombras e celebrar o verdadeiro Heavy Metal.</p>
-  
         <p>Preparem seus pescoços para uma noite histórica, onde o misticismo e o peso se encontram no palco para o especial de Halloween mais sombrio do ano.</p>
-</div>
+    </div>
 </header>
 
 <section class="section-dark">
@@ -241,7 +249,14 @@
         <span id="arr1">▼</span>
     </div>
     <div id="legacy1" class="legacy-content">
-        <iframe class="video-item" src="https://www.youtube.com/embed/x6-LvdI7XiM" frameborder="0" allowfullscreen></iframe>
+        <iframe class="video-item horiz" src="https://www.youtube.com/embed/x6-LvdI7XiM" frameborder="0" allowfullscreen></iframe>
+        <div class="video-grid-vertical">
+            <iframe class="video-item vert" src="https://www.youtube.com/embed/4RRQsGccZuQ" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video-item vert" src="https://www.youtube.com/embed/lNygJKOheM0" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video-item vert" src="https://www.youtube.com/embed/Woui-RRtOhc" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video-item vert" src="https://www.youtube.com/embed/2c5FNgwJKgQ" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video-item vert" src="https://www.youtube.com/embed/9gmlLfEY7JU" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 </div>
 
@@ -274,15 +289,25 @@
     </a>
 </section>
 
-<footer><p>Gods Of Metal © 2026 | UBERLÂNDIA - MG</p></footer>
+<footer>
+    <p>Gods Of Metal © 2026 | UBERLÂNDIA - MG</p>
+</footer>
 
 <script>
-    function fecharSpotify() { document.getElementById('spotify-flutuante').style.display = 'none'; }
+    function fecharSpotify() {
+        document.getElementById('spotify-flutuante').style.display = 'none';
+    }
+
     function toggleSection(id, arrowId) {
         const content = document.getElementById(id);
         const arrow = document.getElementById(arrowId);
-        content.style.display = content.style.display === "block" ? "none" : "block";
-        arrow.textContent = content.style.display === "block" ? "▲" : "▼";
+        if (content.style.display === "block") {
+            content.style.display = "none";
+            arrow.textContent = "▼";
+        } else {
+            content.style.display = "block";
+            arrow.textContent = "▲";
+        }
     }
 </script>
 
