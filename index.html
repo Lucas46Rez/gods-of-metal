@@ -81,11 +81,17 @@
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
-            border: 2px solid #222;
             filter: grayscale(100%);
             transition: 0.5s ease;
+            border: 4px solid;
+            border-image: linear-gradient(135deg, #111, #444, #AAA, #222, #777, #AAA, #000) 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.9), inset 0 0 10px rgba(0,0,0,0.9);
         }
-        .artist-card:hover img.band-photo { filter: grayscale(0%); border-color: #d40000; transform: scale(1.02); }
+        .artist-card:hover img.band-photo { 
+            filter: grayscale(0%); 
+            transform: scale(1.02); 
+            border-image: linear-gradient(135deg, #d40000, #ff4500, #440000, #d40000) 1;
+        }
 
         .logo-wrapper { height: 120px; display: flex; justify-content: center; align-items: center; gap: 15px; }
         .band-logo { max-height: 70px; filter: grayscale(100%); transition: 0.5s; }
@@ -97,12 +103,18 @@
         .integrantes-img {
             max-width: 1000px;
             width: 90%;
-            border: 2px solid #222;
             filter: grayscale(100%);
             transition: 0.5s ease;
             cursor: pointer;
+            border: 5px solid;
+            border-image: linear-gradient(135deg, #111, #444, #AAA, #222, #777, #AAA, #000) 1;
+            box-shadow: 0 5px 20px rgba(0,0,0,1), inset 0 0 15px rgba(0,0,0,0.9);
         }
-        .integrantes-img:hover { filter: grayscale(0%); border-color: #d40000; transform: scale(1.02); }
+        .integrantes-img:hover { 
+            filter: grayscale(0%); 
+            border-image: linear-gradient(135deg, #d40000, #ff4500, #440000, #d40000) 1;
+            transform: scale(1.02); 
+        }
 
         /* LEGADOS */
         .legacy-container {
@@ -141,6 +153,12 @@
             align-items: center;
             gap: 15px;
         }
+        .logo-benedith {
+            max-width: 280px;
+            height: auto;
+            margin: 10px 0;
+            filter: drop-shadow(0 0 10px rgba(212, 0, 0, 0.3));
+        }
         .btn-ritual {
             display: flex; align-items: center; justify-content: center; gap: 12px;
             width: 100%; max-width: 350px; padding: 18px;
@@ -151,7 +169,6 @@
         .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
         .btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497, #fd5949, #d6249f, #285AEB); }
         .btn-spotify { background-color: #1DB954; }
-        
         .btn-ritual:hover { transform: scale(1.05); }
         .btn-ritual svg { width: 22px; height: 22px; fill: currentColor; }
 
@@ -228,6 +245,9 @@
 
 <section class="event-info-bottom">
     <h2 style="font-size: 3rem; color: #ff4500; text-shadow: 0 0 15px #d40000;">🎃 31 OUTUBRO | 20:00H 🦇</h2>
+    
+    <img src="benedith logo.png" alt="Cerveja Benedith" class="logo-benedith">
+
     <p>CERVEJARIA BENEDITH | AV. GETÚLIO VARGAS, 2100 | UBERLÂNDIA-MG</p>
     
     <a href="https://www.google.com/maps/search/?api=1&query=Av.+Getúlio+Vargas,+2100,+Uberlândia+-+MG" target="_blank" class="btn-ritual btn-maps">
