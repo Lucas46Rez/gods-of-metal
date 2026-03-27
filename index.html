@@ -20,8 +20,6 @@
             color: #fff;
             font-family: 'Roboto', sans-serif;
             text-align: center;
-            /* Espaço para o player fixo no topo */
-            padding-top: 80px;
         }
 
         h1, h2 {
@@ -32,30 +30,46 @@
             margin: 0;
         }
 
-        /* WIDGET SPOTIFY FIXO */
-        #spotify-ritual-player {
+        /* SPOTIFY FLUTUANTE COM OPÇÃO DE FECHAR */
+        #spotify-flutuante {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            width: 300px;
             height: 80px;
-            z-index: 10000;
             background: #000;
-            border-bottom: 2px solid #d40000;
-            box-shadow: 0 4px 15px rgba(212, 0, 0, 0.5);
-            line-height: 0;
+            border: 1px solid #d40000;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(212, 0, 0, 0.6);
+            overflow: visible;
+            transition: all 0.3s ease;
         }
 
-        /* LOGO FLUTUANTE */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .btn-fechar-spotify {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 25px;
+            height: 25px;
+            background: #d40000;
+            color: white;
+            border: 2px solid #000;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
         }
+
+        .btn-fechar-spotify:hover { background: #ff0000; transform: scale(1.1); }
 
         /* CABEÇALHO */
         header {
-            min-height: calc(100vh - 80px);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,18 +79,18 @@
             border-bottom: 5px solid #d40000;
         }
 
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
         .logo-principal {
             width: 100%;
             max-width: 1080px;
             height: auto;
             filter: drop-shadow(0 0 20px #d40000);
-            margin-bottom: 0px; 
             animation: float 4s ease-in-out infinite;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
         }
 
         .intro-container {
@@ -85,7 +99,7 @@
             color: #eee;
             font-size: 1.15rem;
             text-shadow: 2px 2px 8px #000;
-            margin-top: -10px;
+            margin-top: 10px;
         }
 
         /* LINE-UP */
@@ -99,78 +113,32 @@
             margin: 0 auto;
         }
 
-        .artist-card { 
-            flex: 1;
-            min-width: 280px; 
-            max-width: 350px; 
-        }
-
+        .artist-card { flex: 1; min-width: 280px; max-width: 350px; }
         .artist-card img.band-photo {
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
             border: 2px solid #222;
             filter: grayscale(100%);
-            transition: all 0.5s ease;
+            transition: 0.5s ease;
         }
+        .artist-card:hover img.band-photo { filter: grayscale(0%); border-color: #d40000; transform: scale(1.02); }
 
-        .artist-card:hover img.band-photo {
-            filter: grayscale(0%);
-            border-color: #d40000;
-            transform: scale(1.02);
-        }
-
-        .logo-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            height: 120px;
-            margin: 10px 0;
-        }
-
-        .band-logo {
-            max-height: 70px;
-            max-width: 100%;
-            filter: grayscale(100%) brightness(0.8);
-            transition: all 0.5s ease;
-        }
-
-        .logo-helloween { max-height: 110px; max-width: 95%; }
-        .logo-wrapper .dual-logo { max-width: 45%; }
-
-        .artist-card:hover .band-logo {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.1);
-        }
-
-        .vocalista-name {
-            color: #FFCC00;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 5px;
-            display: block;
-        }
+        .logo-wrapper { height: 120px; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        .band-logo { max-height: 70px; filter: grayscale(100%); transition: 0.5s; }
+        .artist-card:hover .band-logo { filter: grayscale(0%); transform: scale(1.1); }
+        .vocalista-name { color: #FFCC00; font-weight: bold; display: block; margin-top: 5px; }
 
         /* SEÇÃO INTEGRANTES */
         .section-dark { padding: 60px 20px; background: transparent; }
-
         .integrantes-img {
             max-width: 1000px;
             width: 90%;
-            height: auto;
             border: 2px solid #222;
             filter: grayscale(100%);
-            transition: all 0.5s ease;
-            cursor: pointer;
+            transition: 0.5s ease;
         }
-
-        .integrantes-img:hover {
-            filter: grayscale(0%);
-            border-color: #d40000;
-            transform: scale(1.02);
-        }
+        .integrantes-img:hover { filter: grayscale(0%); border-color: #d40000; transform: scale(1.02); }
 
         /* LEGADOS */
         .legacy-container {
@@ -180,7 +148,6 @@
             border: 1px solid #222;
             text-align: left;
         }
-
         .legacy-header {
             background: rgba(21, 21, 21, 1);
             padding: 20px;
@@ -189,36 +156,10 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .legacy-header h2 { margin: 0; font-size: 1.1rem; flex-grow: 1; color: #fff; }
         .legacy-content { padding: 25px; display: none; text-align: center; }
-        
-        .video-item { 
-            width: 100%; 
-            background: #000; 
-            border: 1px solid #333; 
-        }
+        .video-item { width: 100%; aspect-ratio: 16/9; border: 1px solid #333; }
 
-        .horiz { aspect-ratio: 16 / 9; margin-bottom: 20px; }
-        
-        .video-grid-vertical { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
-            gap: 15px; 
-        }
-        
-        .vert { aspect-ratio: 9 / 16; }
-
-        /* DESTAQUE DA DATA HALLOWEEN */
-        .data-hora-ritual {
-            font-size: 3rem;
-            color: #ff4500; 
-            text-shadow: 0 0 15px #d40000, 2px 2px 5px #000;
-            margin: 20px 0;
-            display: block;
-        }
-
-        /* RODAPÉ E BOTÕES DE AÇÃO */
+        /* RODAPÉ E BOTÕES */
         .event-info-bottom {
             background: rgba(0, 0, 0, 0.95);
             padding: 60px 20px;
@@ -228,101 +169,62 @@
             align-items: center;
             gap: 15px;
         }
-
         .btn-ritual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 350px;
-            padding: 18px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; max-width: 350px; padding: 18px;
+            color: white; text-decoration: none; font-weight: bold; text-transform: uppercase;
+            border-radius: 50px; transition: 0.3s ease; font-size: 0.9rem;
         }
-
         .btn-maps { background-color: #d40000; border-radius: 4px; }
-        .btn-maps:hover { background-color: #ff0000; box-shadow: 0 0 20px rgba(212, 0, 0, 0.6); transform: scale(1.02); }
-
-        .btn-whatsapp { 
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-        .btn-whatsapp:hover { box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); transform: scale(1.02); }
-
-        .btn-instagram {
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            box-shadow: 0 4px 15px rgba(214, 36, 159, 0.3);
-        }
-        .btn-instagram:hover { box-shadow: 0 0 20px rgba(214, 36, 159, 0.5); transform: scale(1.02); }
-
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); }
+        .btn-instagram { background: radial-gradient(circle at 30% 107%, #fdf497, #fd5949, #d6249f, #285AEB); }
+        .btn-ritual:hover { transform: scale(1.05); }
         .btn-ritual svg { width: 22px; height: 22px; fill: currentColor; }
 
-        footer { padding: 40px; color: #444; font-size: 0.8rem; background: #000; border-top: 1px solid #111; }
+        footer { padding: 40px; color: #444; font-size: 0.8rem; border-top: 1px solid #111; }
         .highlight-text { color: #d40000; }
 
         @media (max-width: 600px) {
-            .data-hora-ritual { font-size: 2.2rem; }
-            body { padding-top: 80px; }
+            #spotify-flutuante { width: 260px; left: 15px; bottom: 15px; }
         }
     </style>
 </head>
 <body>
 
-<div id="spotify-ritual-player">
-    <iframe 
-        style="border-radius:0px" 
-        src="https://open.spotify.com/embed/playlist/SUA_PLAYLIST_ID_AQUI?utm_source=generator&theme=0" 
-        width="100%" 
-        height="80" 
-        frameBorder="0" 
-        allowfullscreen="" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-    </iframe>
+<div id="spotify-flutuante">
+    <button class="btn-fechar-spotify" onclick="fecharSpotify()">×</button>
+    <iframe style="border-radius:0px" src="https://open.spotify.com/embed/playlist/2FNTHr2faf8WJGm8YyCE9C?utm_source=generator" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 </div>
 
 <header>
     <img src="logo.png" alt="Gods Of Metal" class="logo-principal">
     <h1>The Halloween's Ritual</h1>
-    
     <div class="intro-container">
         <p>Vocês pediram e os Deuses do Metal ouviram! Após o sucesso avassalador da nossa primeira edição, o ritual está de volta para invocar as sombras e celebrar o verdadeiro Heavy Metal.</p>
+  
         <p>Preparem seus pescoços para uma noite histórica, onde o misticismo e o peso se encontram no palco para o especial de Halloween mais sombrio do ano.</p>
-    </div>
+</div>
 </header>
 
 <section class="section-dark">
     <h2>NESSE RITUAL PRESTAREMOS TRIBUTO ÀS BANDAS...</h2>
     <div class="lineup-container">
         <div class="artist-card">
-            <img src="kingdiamond1.png" alt="King Diamond" class="band-photo">
+            <img src="kingdiamond1.png" class="band-photo">
             <div class="logo-wrapper">
-                <img src="kingdiamond-logo.png" alt="King Diamond Logo" class="band-logo dual-logo">
-                <img src="mercyfulfate-logo.png" alt="Mercyful Fate Logo" class="band-logo dual-logo">
+                <img src="kingdiamond-logo.png" class="band-logo">
+                <img src="mercyfulfate-logo.png" class="band-logo">
             </div>
             <span class="vocalista-name">VOCAL: LUCAS REZENDE</span>
         </div>
-
         <div class="artist-card">
-            <img src="ghost1.png" alt="Ghost" class="band-photo">
-            <div class="logo-wrapper">
-                <img src="ghost-logo.png" alt="Ghost Logo" class="band-logo">
-            </div>
+            <img src="ghost1.png" class="band-photo">
+            <div class="logo-wrapper"><img src="ghost-logo.png" class="band-logo"></div>
             <span class="vocalista-name">VOCAL: MR. JOJO</span>
         </div>
-
         <div class="artist-card">
-            <img src="helloween1.png" alt="Helloween" class="band-photo">
-            <div class="logo-wrapper">
-                <img src="helloween-logo.png" alt="Helloween Logo" class="band-logo logo-helloween">
-            </div>
+            <img src="helloween1.png" class="band-photo">
+            <div class="logo-wrapper"><img src="helloween-logo.png" class="band-logo" style="max-height: 100px;"></div>
             <span class="vocalista-name">VOCAL: NILO MARTINS</span>
         </div>
     </div>
@@ -334,68 +236,53 @@
 </section>
 
 <div class="legacy-container">
-    <div class="legacy-header" onclick="toggleSection('legacy-content', 'arrow1')">
-        <h2>O LEGADO: 1ª EDIÇÃO (17.01.26) > <span class="highlight-text">ROB HALFORD | RONNIE JAMES DIO | OZZY OSBOURNE</span></h2>
-        <span id="arrow1">▼</span>
+    <div class="legacy-header" onclick="toggleSection('legacy1', 'arr1')">
+        <h2>O LEGADO: 1ª EDIÇÃO (17.01.26) > <span class="highlight-text">HALFORD | DIO | OZZY</span></h2>
+        <span id="arr1">▼</span>
     </div>
-    <div id="legacy-content" class="legacy-content">
-        <iframe class="video-item horiz" src="https://www.youtube.com/embed/x6-LvdI7XiM" frameborder="0" allowfullscreen></iframe>
-        <div class="video-grid-vertical">
-            <iframe class="video-item vert" src="https://www.youtube.com/embed/4RRQsGccZuQ" frameborder="0" allowfullscreen></iframe>
-            <iframe class="video-item vert" src="https://www.youtube.com/embed/lNygJKOheM0" frameborder="0" allowfullscreen></iframe>
-            <iframe class="video-item vert" src="https://www.youtube.com/embed/Woui-RRtOhc" frameborder="0" allowfullscreen></iframe>
-            <iframe class="video-item vert" src="https://www.youtube.com/embed/2c5FNgwJKgQ" frameborder="0" allowfullscreen></iframe>
-            <iframe class="video-item vert" src="https://www.youtube.com/embed/9gmlLfEY7JU" frameborder="0" allowfullscreen></iframe>
-        </div>
+    <div id="legacy1" class="legacy-content">
+        <iframe class="video-item" src="https://www.youtube.com/embed/x6-LvdI7XiM" frameborder="0" allowfullscreen></iframe>
     </div>
 </div>
 
 <div class="legacy-container">
-    <div class="legacy-header" onclick="toggleSection('ed2-content', 'arrow2')">
+    <div class="legacy-header" onclick="toggleSection('legacy2', 'arr2')">
         <h2>O LEGADO: 2ª EDIÇÃO (31.10.26) > <span class="highlight-text">KING DIAMOND & MERCYFUL FATE | GHOST | HELLOWEEN</span></h2>
-        <span id="arrow2">▼</span>
+        <span id="arr2">▼</span>
     </div>
-    <div id="ed2-content" class="legacy-content">
-        <p style="color: #666; font-style: italic;">O ritual foi invocado. Vídeos em breve.</p>
+    <div id="legacy2" class="legacy-content">
+        <p style="color: #666; font-style: italic;">O ritual será invocado no Halloween. Vídeos em breve.</p>
     </div>
 </div>
 
 <section class="event-info-bottom">
-    <h2 class="data-hora-ritual">🎃 31 OUTUBRO | 20:00H 🦇</h2>
+    <h2 style="font-size: 3rem; color: #ff4500; text-shadow: 0 0 15px #d40000;">🎃 31 OUTUBRO | 20:00H 🦇</h2>
+    <p>CERVEJARIA BENEDITH | AV. GETÚLIO VARGAS, 2100 | UBERLÂNDIA-MG</p>
     
-    <p>LOCAL - CERVEJARIA BENEDITH | AV. GETÚLIO VARGAS, 2100 - UBERLÂNDIA</p>
-    <p><strong class="highlight-text">INGRESSOS NA PORTARIA NO DIA DO FESTIVAL</strong></p>
-    
-    <a href="https://www.google.com/maps/search/?api=1&query=Cervejaria+Benedith+Uberlandia+Av+Getulio+Vargas+2100" target="_blank" class="btn-ritual btn-maps">
+    <a href="https://maps.google.com/?cid=16634756551714359574&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="btn-ritual btn-maps">
        VER LOCALIZAÇÃO NO MAPA
     </a>
 
-    <a href="https://api.whatsapp.com/send?text=Bora%20pro%20Ritual?%20Gods%20Of%20Metal%20fest%20está%20de%20volta!%20Confere%20aqui:%20https://lucas46rez.github.io/gods-of-metal/" target="_blank" class="btn-ritual btn-whatsapp">
+    <a href="https://api.whatsapp.com/send?text=Bora%20pro%20Ritual?%20Confere%20aqui:%20https://lucas46rez.github.io/gods-of-metal/" target="_blank" class="btn-ritual btn-whatsapp">
        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-       Compartilhar no WhatsApp
+       Convide os amigos para o Ritual
     </a>
 
     <a href="https://www.instagram.com/gods.of.metal.fest" target="_blank" class="btn-ritual btn-instagram">
        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-       Seguir no Instagram
+       Siga-nos no Instagram
     </a>
 </section>
 
-<footer>
-    <p>Gods Of Metal © 2026 | UBERLÂNDIA - MG</p>
-</footer>
+<footer><p>Gods Of Metal © 2026 | UBERLÂNDIA - MG</p></footer>
 
 <script>
+    function fecharSpotify() { document.getElementById('spotify-flutuante').style.display = 'none'; }
     function toggleSection(id, arrowId) {
         const content = document.getElementById(id);
         const arrow = document.getElementById(arrowId);
-        if (content.style.display === "block") {
-            content.style.display = "none";
-            arrow.textContent = "▼";
-        } else {
-            content.style.display = "block";
-            arrow.textContent = "▲";
-        }
+        content.style.display = content.style.display === "block" ? "none" : "block";
+        arrow.textContent = content.style.display === "block" ? "▲" : "▼";
     }
 </script>
 
